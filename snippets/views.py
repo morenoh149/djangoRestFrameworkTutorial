@@ -3,10 +3,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from snippets.models import Snippet
 from snippets.serializers import SnippetSerializer
-from django.views.decorators.csrf import csrf_exempt
 
 
-@csrf_exempt
 @api_view(['GET', 'POST'])
 def snippet_list(request, format=None):
     """
@@ -25,7 +23,6 @@ def snippet_list(request, format=None):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-@csrf_exempt
 @api_view(['GET', 'PUT', 'DELETE'])
 def snippet_detail(request, pk, format=None):
     """
